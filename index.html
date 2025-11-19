@@ -168,13 +168,12 @@
   </div>
 
 <script>
-  // Dynamic content example
   const domain = window.location.hostname.toLowerCase();
   const sites = {
     "zurialltd.com": {
       name: "Zurial Ltd",
       title: "Launching soon",
-      icontext:"Z",
+      icontext: "Z",
       description: [
         "Something amazing is on the way...",
         "Stay tuned for updates!"
@@ -183,7 +182,7 @@
     "schematiq.com": {
       name: "Schematiq",
       title: "Launching soon",
-      icontext:"S",
+      icontext: "S",
       description: [
         "Tech doesn't have to feel like a different language.",
         "Innovation works for you and your people."
@@ -194,13 +193,15 @@
   const defaultSite = {
     name: "Our Website",
     title: "Coming Soon",
+    icontext: "O",
     description: ["Exciting things are on the way!", "Stay tuned!"]
   };
 
   const site = sites[domain] || defaultSite;
 
+  // Fix: use correct id for logo icon
   document.getElementById("logoName").textContent = site.name;
-  document.getElementById("logo-icon").textContent = site.icontext;
+  document.getElementById("logoIcon").textContent = site.icontext;
   document.getElementById("mainTitle").textContent = site.title;
 
   const textContent = document.getElementById("textContent");
