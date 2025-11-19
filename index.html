@@ -1,95 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
 
-    .container {
-      max-width: 600px;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 15px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.5);
-      animation: fadeIn 1.5s ease-in-out;
-    }
+  .container {
+    max-width: 600px;
+    padding: 30px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    animation: fadeIn 1.5s ease-in-out;
+    z-index: 1;
+    position: relative;
+  }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-      font-weight: 700;
-      color: #ffd700;
-    }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #ffd700;
+  }
 
-    p {
-      font-family: 'Raleway', sans-serif;
-      font-size: 1.2rem;
-      opacity: 0.85;
-      margin-top: 15px;
-      line-height: 1.6;
-    }
+  p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    opacity: 0.85;
+    margin-top: 15px;
+    line-height: 1.6;
+  }
 
-    .brand {
-      font-weight: bold;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
-    }
+  .brand {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+  }
 
-    .footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
+  .footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    /* Optional subtle background animation */
-    body::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.03), transparent 70%);
-      animation: rotate 20s linear infinite;
-      z-index: 0;
-    }
+  /* Mini game canvas */
+  #gameCanvas {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+    width: 200px;
+    height: 150px;
+    z-index: 2;
+  }
 
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .container > * {
-      position: relative;
-      z-index: 1;
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
@@ -103,42 +96,94 @@
     </div>
   </div>
 
+  <!-- Mini Game Canvas -->
+  <canvas id="gameCanvas"></canvas>
+
   <script>
+    // Multi-domain setup
     const domain = window.location.hostname.toLowerCase();
 
     const sites = {
-      "zurialltd.com": {
-        name: "Zurial Ltd",
-        tagline: "Something amazing is on the way...",
-        color: "#4caf50"
-      },
-      "example1.com": {
-        name: "Example Company One",
-        tagline: "We’re building something special.",
-        color: "#e91e63"
-      },
-      "example2.com": {
-        name: "Another Brand",
-        tagline: "Prepare to experience greatness.",
-        color: "#2196f3"
-      }
+      "zurialltd.com": { name: "Zurial Ltd", tagline: "Something amazing is on the way...", color: "#4caf50" },
+      "example1.com": { name: "Example Company One", tagline: "We’re building something special.", color: "#e91e63" },
+      "example2.com": { name: "Another Brand", tagline: "Prepare to experience greatness.", color: "#2196f3" }
     };
 
-    const defaultSite = {
-      name: "Our Website",
-      tagline: "Coming soon. Stay tuned.",
-      color: "#ffffff"
-    };
-
+    const defaultSite = { name: "Our Website", tagline: "Coming soon. Stay tuned.", color: "#ffffff" };
     const site = sites[domain] || defaultSite;
 
     document.getElementById("brandName").textContent = site.name;
     document.getElementById("footerBrand").textContent = site.name;
     document.getElementById("tagline").textContent = site.tagline;
-
     document.querySelector(".brand").style.color = site.color;
-
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // --- Mini Game: Catch the Falling Star ---
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 200;
+    canvas.height = 150;
+
+    let paddle = { x: 70, y: 140, width: 60, height: 10, dx: 0 };
+    let star = { x: Math.random() * 180, y: 0, size: 10, dy: 2 };
+    let score = 0;
+
+    // Controls
+    document.addEventListener('keydown', e => {
+      if(e.key === "ArrowLeft") paddle.dx = -4;
+      if(e.key === "ArrowRight") paddle.dx = 4;
+    });
+    document.addEventListener('keyup', e => {
+      if(e.key === "ArrowLeft" || e.key === "ArrowRight") paddle.dx = 0;
+    });
+
+    function drawPaddle() {
+      ctx.fillStyle = "#ffd700";
+      ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+    }
+
+    function drawStar() {
+      ctx.fillStyle = "#4caf50";
+      ctx.beginPath();
+      ctx.arc(star.x + star.size/2, star.y + star.size/2, star.size/2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawScore() {
+      ctx.fillStyle = "#fff";
+      ctx.font = "12px Montserrat";
+      ctx.fillText("Score: " + score, 10, 15);
+    }
+
+    function update() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      // Move paddle
+      paddle.x += paddle.dx;
+      if(paddle.x < 0) paddle.x = 0;
+      if(paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
+
+      // Move star
+      star.y += star.dy;
+      if(star.y + star.size > canvas.height) {
+        // Check collision
+        if(star.x + star.size > paddle.x && star.x < paddle.x + paddle.width) {
+          score++;
+        }
+        // Reset star
+        star.y = 0;
+        star.x = Math.random() * (canvas.width - star.size);
+      }
+
+      drawPaddle();
+      drawStar();
+      drawScore();
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+
   </script>
 </body>
 </html>
