@@ -6,15 +6,15 @@
 <title>Coming Soon</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', Arial, sans-serif;
-    background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
-    color: #fff;
+    font-family: 'Inter', sans-serif;
+    background: #121212;
+    color: #f5f5f5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,36 +26,37 @@
 
   .container {
     max-width: 600px;
-    padding: 30px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 15px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.5);
-    animation: fadeIn 1.5s ease-in-out;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    animation: fadeIn 1.2s ease-in-out;
     z-index: 1;
     position: relative;
   }
 
   h1 {
+    font-family: 'Poppins', sans-serif;
     font-size: 3rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
     font-weight: 700;
-    color: #ffd700;
+    color: #ffffff;
   }
 
   p {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.2rem;
-    opacity: 0.85;
-    margin-top: 15px;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-top: 12px;
     line-height: 1.6;
   }
 
   .brand {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 2rem;
     margin-bottom: 15px;
-    text-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
+    color: #ffffff;
+    text-shadow: none; /* Removed harsh shadows */
   }
 
   .footer {
@@ -65,7 +66,7 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -74,9 +75,9 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    border: 2px solid #ffd700;
+    border: 1px solid #ffffff40;
     border-radius: 10px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.05);
     width: 200px;
     height: 150px;
     z-index: 2;
@@ -96,94 +97,70 @@
     </div>
   </div>
 
-  <!-- Mini Game Canvas -->
   <canvas id="gameCanvas"></canvas>
 
-  <script>
-    // Multi-domain setup
-    const domain = window.location.hostname.toLowerCase();
+<script>
+  // Multi-domain setup
+  const domain = window.location.hostname.toLowerCase();
 
-    const sites = {
-      "zurialltd.com": { name: "Zurial Ltd", tagline: "Something amazing is on the way...", color: "#4caf50" },
-      "example1.com": { name: "Example Company One", tagline: "We’re building something special.", color: "#e91e63" },
-      "example2.com": { name: "Another Brand", tagline: "Prepare to experience greatness.", color: "#2196f3" }
-    };
+  const sites = {
+    "zurialltd.com": { name: "Zurial Ltd", tagline: "Something amazing is on the way...", color: "#ffffff" },
+    "example1.com": { name: "Example Company One", tagline: "We’re building something special.", color: "#ffffff" },
+    "example2.com": { name: "Another Brand", tagline: "Prepare to experience greatness.", color: "#ffffff" }
+  };
 
-    const defaultSite = { name: "Our Website", tagline: "Coming soon. Stay tuned.", color: "#ffffff" };
-    const site = sites[domain] || defaultSite;
+  const defaultSite = { name: "Our Website", tagline: "Coming soon. Stay tuned.", color: "#ffffff" };
+  const site = sites[domain] || defaultSite;
 
-    document.getElementById("brandName").textContent = site.name;
-    document.getElementById("footerBrand").textContent = site.name;
-    document.getElementById("tagline").textContent = site.tagline;
-    document.querySelector(".brand").style.color = site.color;
-    document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("brandName").textContent = site.name;
+  document.getElementById("footerBrand").textContent = site.name;
+  document.getElementById("tagline").textContent = site.tagline;
+  document.querySelector(".brand").style.color = site.color;
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    // --- Mini Game: Catch the Falling Star ---
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 200;
-    canvas.height = 150;
+  // --- Mini Game: Catch the Falling Star ---
+  const canvas = document.getElementById('gameCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 200;
+  canvas.height = 150;
 
-    let paddle = { x: 70, y: 140, width: 60, height: 10, dx: 0 };
-    let star = { x: Math.random() * 180, y: 0, size: 10, dy: 2 };
-    let score = 0;
+  let paddle = { x: 70, y: 140, width: 60, height: 10, dx: 0 };
+  let star = { x: Math.random() * 180, y: 0, size: 10, dy: 2 };
+  let score = 0;
 
-    // Controls
-    document.addEventListener('keydown', e => {
-      if(e.key === "ArrowLeft") paddle.dx = -4;
-      if(e.key === "ArrowRight") paddle.dx = 4;
-    });
-    document.addEventListener('keyup', e => {
-      if(e.key === "ArrowLeft" || e.key === "ArrowRight") paddle.dx = 0;
-    });
+  // Controls
+  document.addEventListener('keydown', e => { if(e.key === "ArrowLeft") paddle.dx = -4; if(e.key === "ArrowRight") paddle.dx = 4; });
+  document.addEventListener('keyup', e => { if(e.key === "ArrowLeft" || e.key === "ArrowRight") paddle.dx = 0; });
 
-    function drawPaddle() {
-      ctx.fillStyle = "#ffd700";
-      ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+  function drawPaddle() { ctx.fillStyle = "#ffffff"; ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height); }
+  function drawStar() { ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(star.x + star.size/2, star.y + star.size/2, star.size/2, 0, Math.PI * 2); ctx.fill(); }
+  function drawScore() { ctx.fillStyle = "#ffffff"; ctx.font = "12px Poppins"; ctx.fillText("Score: " + score, 10, 15); }
+
+  function update() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Paddle
+    paddle.x += paddle.dx;
+    if(paddle.x < 0) paddle.x = 0;
+    if(paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
+
+    // Star
+    star.y += star.dy;
+    if(star.y + star.size > canvas.height) {
+      if(star.x + star.size > paddle.x && star.x < paddle.x + paddle.width) score++;
+      star.y = 0;
+      star.x = Math.random() * (canvas.width - star.size);
     }
 
-    function drawStar() {
-      ctx.fillStyle = "#4caf50";
-      ctx.beginPath();
-      ctx.arc(star.x + star.size/2, star.y + star.size/2, star.size/2, 0, Math.PI * 2);
-      ctx.fill();
-    }
+    drawPaddle();
+    drawStar();
+    drawScore();
 
-    function drawScore() {
-      ctx.fillStyle = "#fff";
-      ctx.font = "12px Montserrat";
-      ctx.fillText("Score: " + score, 10, 15);
-    }
+    requestAnimationFrame(update);
+  }
 
-    function update() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
+  update();
 
-      // Move paddle
-      paddle.x += paddle.dx;
-      if(paddle.x < 0) paddle.x = 0;
-      if(paddle.x + paddle.width > canvas.width) paddle.x = canvas.width - paddle.width;
-
-      // Move star
-      star.y += star.dy;
-      if(star.y + star.size > canvas.height) {
-        // Check collision
-        if(star.x + star.size > paddle.x && star.x < paddle.x + paddle.width) {
-          score++;
-        }
-        // Reset star
-        star.y = 0;
-        star.x = Math.random() * (canvas.width - star.size);
-      }
-
-      drawPaddle();
-      drawStar();
-      drawScore();
-
-      requestAnimationFrame(update);
-    }
-
-    update();
-
-  </script>
+</script>
 </body>
 </html>
