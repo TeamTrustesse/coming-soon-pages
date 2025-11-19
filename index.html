@@ -20,7 +20,7 @@
     justify-content: center;
     min-height: 100vh;
     text-align: left;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
     flex-direction: column;
   }
@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-bottom: 180px; /* Extra bottom space for contact */
   }
 
   .header-section {
@@ -84,7 +85,7 @@
     margin: 0 0 15px 0;
   }
 
-  /* Abstract shapes */
+  /* Shapes */
   .shape-left {
     position: absolute;
     top: 10%;
@@ -111,10 +112,28 @@
     transform: rotate(20deg);
   }
 
+  /* Floating bubble */
+  .bubble {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    bottom: 50px;
+    left: 50px;
+    animation: floatBubble 6s ease-in-out infinite;
+  }
+
+  @keyframes floatBubble {
+    0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    50% { transform: translateY(-200px) translateX(100px); opacity: 0.6; }
+    100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  }
+
   /* Launch image */
   .launch-image {
     position: absolute;
-    bottom: 40px;
+    bottom: 160px; /* push above contact section */
     right: 60px;
     width: 350px;
     height: 250px;
@@ -154,7 +173,7 @@
   @media (max-width: 768px) {
     h1 { font-size: 3rem; }
     .text-content { max-width: 90%; margin-top: 20px; }
-    .launch-image { width: 250px; height: 180px; bottom: 20px; right: 30px; }
+    .launch-image { width: 250px; height: 180px; bottom: 180px; right: 30px; }
     .shape-left, .shape-right { filter: blur(50px); opacity: 0.3; }
     .contact-section { padding: 20px; }
   }
@@ -165,6 +184,7 @@
     .logo-icon { width: 30px; height: 30px; font-size: 1rem; }
     .launch-image { display: none; }
   }
+
 </style>
 </head>
 
@@ -189,6 +209,8 @@
       <img src="" alt="Launch image">
     </div>
 
+    <div class="bubble"></div> <!-- Floating bubble -->
+
     <!-- Contact Section -->
     <div class="contact-section" id="contactSection">
       <h2>Contact Us</h2>
@@ -196,7 +218,6 @@
       <p>Phone: <a href="tel:+1234567890" style="color:#00c6ff;">+1 234 567 890</a></p>
       <p>Follow us on: <a href="#" style="color:#00c6ff;">Twitter</a>, <a href="#" style="color:#00c6ff;">LinkedIn</a></p>
     </div>
-
   </div>
 
 <script>
