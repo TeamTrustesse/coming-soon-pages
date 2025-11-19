@@ -18,9 +18,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    text-align: left;
-    overflow-x: hidden;
+    height: 100vh; /* fixed viewport height */
+    overflow: hidden; /* remove scroll */
     position: relative;
     flex-direction: column;
   }
@@ -33,13 +32,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 180px; /* Extra bottom space for contact */
   }
 
   .header-section {
     display: flex;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px; /* slightly reduced spacing */
   }
 
   .logo-icon {
@@ -75,7 +73,7 @@
 
   .text-content {
     max-width: 600px;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   p {
@@ -115,25 +113,24 @@
   /* Floating bubble */
   .bubble {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 50px; /* bigger bubble */
+    height: 50px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    bottom: 50px;
+    bottom: 0; /* start at bottom */
     left: 50px;
-    animation: floatBubble 6s ease-in-out infinite;
+    animation: floatUp 8s linear infinite;
   }
 
-  @keyframes floatBubble {
-    0% { transform: translateY(0) translateX(0); opacity: 0.3; }
-    50% { transform: translateY(-200px) translateX(100px); opacity: 0.6; }
-    100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.3; }
+    100% { transform: translateY(-600px) translateX(50px); opacity: 0.6; }
   }
 
   /* Launch image */
   .launch-image {
     position: absolute;
-    bottom: 160px; /* push above contact section */
+    bottom: 150px; /* push above contact */
     right: 60px;
     width: 350px;
     height: 250px;
@@ -150,8 +147,8 @@
 
   /* Contact section */
   .contact-section {
-    margin-top: 60px;
-    padding: 30px;
+    margin-top: 30px; /* push closer to main content */
+    padding: 20px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     max-width: 600px;
@@ -159,8 +156,8 @@
 
   .contact-section h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
     color: #ffffff;
   }
 
@@ -172,10 +169,10 @@
 
   @media (max-width: 768px) {
     h1 { font-size: 3rem; }
-    .text-content { max-width: 90%; margin-top: 20px; }
-    .launch-image { width: 250px; height: 180px; bottom: 180px; right: 30px; }
+    .text-content { max-width: 90%; margin-top: 15px; }
+    .launch-image { width: 250px; height: 180px; bottom: 150px; right: 30px; }
     .shape-left, .shape-right { filter: blur(50px); opacity: 0.3; }
-    .contact-section { padding: 20px; }
+    .contact-section { padding: 15px; }
   }
 
   @media (max-width: 480px) {
@@ -184,7 +181,6 @@
     .logo-icon { width: 30px; height: 30px; font-size: 1rem; }
     .launch-image { display: none; }
   }
-
 </style>
 </head>
 
@@ -209,7 +205,7 @@
       <img src="" alt="Launch image">
     </div>
 
-    <div class="bubble"></div> <!-- Floating bubble -->
+    <div class="bubble"></div> <!-- Animated bubble -->
 
     <!-- Contact Section -->
     <div class="contact-section" id="contactSection">
@@ -251,10 +247,7 @@
       contact: {
         email: "hello@schematiq.com",
         phone: "+1 234 567 890",
-        social: {
-          twitter: "#",
-          linkedin: "#"
-        }
+        social: { twitter: "#", linkedin: "#" }
       }
     }
   };
@@ -267,10 +260,7 @@
     contact: {
       email: "info@example.com",
       phone: "+123 456 7890",
-      social: {
-        twitter: "#",
-        linkedin: "#"
-      }
+      social: { twitter: "#", linkedin: "#" }
     }
   };
 
@@ -293,7 +283,7 @@
   const launchImage = document.querySelector("#launchImage img");
   launchImage.src = "https://picsum.photos/seed/" + site.name.replace(/\s+/g,'') + "/350/250";
 
-  // Update contact section dynamically
+  // Update contact dynamically
   const contactSection = document.getElementById("contactSection");
   contactSection.innerHTML = `
     <h2>Contact Us</h2>
