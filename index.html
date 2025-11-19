@@ -22,6 +22,7 @@
     text-align: left;
     overflow: hidden;
     position: relative;
+    flex-direction: column;
   }
 
   .container {
@@ -128,11 +129,34 @@
     object-fit: cover;
   }
 
+  /* Contact section */
+  .contact-section {
+    margin-top: 60px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    max-width: 600px;
+  }
+
+  .contact-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+
+  .contact-section p {
+    margin: 5px 0;
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
   @media (max-width: 768px) {
     h1 { font-size: 3rem; }
     .text-content { max-width: 90%; margin-top: 20px; }
     .launch-image { width: 250px; height: 180px; bottom: 20px; right: 30px; }
     .shape-left, .shape-right { filter: blur(50px); opacity: 0.3; }
+    .contact-section { padding: 20px; }
   }
 
   @media (max-width: 480px) {
@@ -141,7 +165,6 @@
     .logo-icon { width: 30px; height: 30px; font-size: 1rem; }
     .launch-image { display: none; }
   }
-
 </style>
 </head>
 
@@ -165,6 +188,15 @@
     <div class="launch-image" id="launchImage">
       <img src="" alt="Launch image">
     </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section" id="contactSection">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:info@example.com" style="color:#00c6ff;">info@example.com</a></p>
+      <p>Phone: <a href="tel:+1234567890" style="color:#00c6ff;">+1 234 567 890</a></p>
+      <p>Follow us on: <a href="#" style="color:#00c6ff;">Twitter</a>, <a href="#" style="color:#00c6ff;">LinkedIn</a></p>
+    </div>
+
   </div>
 
 <script>
@@ -177,7 +209,15 @@
       description: [
         "Something amazing is on the way...",
         "Stay tuned for updates!"
-      ]
+      ],
+      contact: {
+        email: "hello@zurialltd.com",
+        phone: "+234 801 234 5678",
+        social: {
+          twitter: "https://twitter.com/ZurialLtd",
+          linkedin: "https://linkedin.com/company/zurialltd"
+        }
+      }
     },
     "schematiq.com": {
       name: "Schematiq",
@@ -186,7 +226,15 @@
       description: [
         "Tech doesn't have to feel like a different language.",
         "Innovation works for you and your people."
-      ]
+      ],
+      contact: {
+        email: "hello@schematiq.com",
+        phone: "+1 234 567 890",
+        social: {
+          twitter: "#",
+          linkedin: "#"
+        }
+      }
     }
   };
 
@@ -194,12 +242,20 @@
     name: "Our Website",
     title: "Coming Soon",
     icontext: "O",
-    description: ["Exciting things are on the way!", "Stay tuned!"]
+    description: ["Exciting things are on the way!", "Stay tuned!"],
+    contact: {
+      email: "info@example.com",
+      phone: "+123 456 7890",
+      social: {
+        twitter: "#",
+        linkedin: "#"
+      }
+    }
   };
 
   const site = sites[domain] || defaultSite;
 
-  // Fix: use correct id for logo icon
+  // Update dynamic content
   document.getElementById("logoName").textContent = site.name;
   document.getElementById("logoIcon").textContent = site.icontext;
   document.getElementById("mainTitle").textContent = site.title;
@@ -212,9 +268,21 @@
     textContent.appendChild(para);
   });
 
-  // Set random launch image from Picsum
+  // Set launch image
   const launchImage = document.querySelector("#launchImage img");
   launchImage.src = "https://picsum.photos/seed/" + site.name.replace(/\s+/g,'') + "/350/250";
+
+  // Update contact section dynamically
+  const contactSection = document.getElementById("contactSection");
+  contactSection.innerHTML = `
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:${site.contact.email}" style="color:#00c6ff;">${site.contact.email}</a></p>
+    <p>Phone: <a href="tel:${site.contact.phone}" style="color:#00c6ff;">${site.contact.phone}</a></p>
+    <p>Follow us on: 
+      <a href="${site.contact.social.twitter}" style="color:#00c6ff;">Twitter</a>, 
+      <a href="${site.contact.social.linkedin}" style="color:#00c6ff;">LinkedIn</a>
+    </p>
+  `;
 </script>
 </body>
 </html>
