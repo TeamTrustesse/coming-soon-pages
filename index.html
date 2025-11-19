@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schematiq - Launching Soon</title>
+<title>Launching Soon</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -149,7 +149,7 @@
   <div class="container">
     <div class="header-section">
       <div class="logo-icon" id="logoIcon">S</div>
-      <div class="logo" id="logoName">schematiq</div>
+      <div class="logo" id="logoName">Welcome</div>
     </div>
 
     <h1 id="mainTitle">Launching<br>soon</h1>
@@ -174,6 +174,7 @@
     "zurialltd.com": {
       name: "Zurial Ltd",
       title: "Launching soon",
+      icontext:"Z",
       description: [
         "Something amazing is on the way...",
         "Stay tuned for updates!"
@@ -182,6 +183,7 @@
     "schematiq.com": {
       name: "Schematiq",
       title: "Launching soon",
+      icontext:"S",
       description: [
         "Tech doesn't have to feel like a different language.",
         "Innovation works for you and your people."
@@ -198,6 +200,7 @@
   const site = sites[domain] || defaultSite;
 
   document.getElementById("logoName").textContent = site.name;
+  document.getElementById("logo-icon").textContent = site.icontext;
   document.getElementById("mainTitle").textContent = site.title;
 
   const textContent = document.getElementById("textContent");
