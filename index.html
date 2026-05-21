@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>JEN-MFB - Coming Soon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@800&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@800&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -29,7 +29,7 @@
             padding: 0 20px 40px 20px;
             color: #555e71;
             
-            /* Ambient multi-colored background mesh */
+            /* High-fidelity mesh gradient background mimicking the original canvas */
             background-color: #f8faff;
             background-image: 
                 radial-gradient(at 0% 15%, rgba(223, 191, 243, 0.4) 0px, transparent 40%),
@@ -51,7 +51,7 @@
             z-index: 10;
         }
 
-        /* Seamless blending corners for the notch */
+        /* Smooth pseudo-element curves to create the seamless 'notch' blend */
         header::before, header::after {
             content: '';
             position: absolute;
@@ -74,21 +74,20 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .logo-icon {
             background: #1e40af;
             color: #ffffff;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-size: 12px;
+            transform: rotate(-45deg);
         }
 
         .logo-text {
@@ -97,21 +96,19 @@
             color: #111827;
         }
 
-        /* --- Main Content --- */
+        /* --- Main Content Section --- */
         main {
             text-align: center;
             max-width: 650px;
             margin: auto;
             position: relative;
             z-index: 5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .emoji-container {
             font-size: 42px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            display: inline-block;
         }
 
         .sub-badge {
@@ -125,40 +122,26 @@
 
         h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(32px, 5vw, 46px); 
+            font-size: 46px;
             font-weight: 800;
             color: #1d4ed8;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             letter-spacing: -0.5px;
         }
 
-        .description-wrapper {
+        .description {
             font-size: 16px;
             color: #64748b;
             line-height: 1.7;
-            margin-bottom: 30px;
+            margin-bottom: 36px;
             font-weight: 400;
         }
         
-        .description-wrapper p {
-            margin-bottom: 4px;
-        }
-
-        /* Dynamic Launch Image Container */
-        #launchImage {
-            margin-bottom: 30px;
-            max-width: 100%;
-        }
-
-        #launchImage img {
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            max-width: 100%;
-            height: auto;
+        .description span {
             display: block;
         }
 
-        /* CTA Button Template styled as a generic interactive wrapper */
+        /* Call To Action Button */
         .cta-btn {
             background-color: #0f1123;
             color: #ffffff;
@@ -174,7 +157,6 @@
             gap: 16px;
             box-shadow: 0 10px 25px rgba(15, 17, 35, 0.25);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            text-decoration: none;
         }
 
         .cta-btn:hover {
@@ -201,49 +183,45 @@
             letter-spacing: 0.3px;
         }
 
-        /* --- Footer (Contact & Social Info Section) --- */
+        /* --- Footer (Social Links) --- */
         footer {
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
+            display: flex;
+            gap: 16px;
             z-index: 10;
-            border-top: 1px solid rgba(0, 0, 0, 0.04);
-            padding-top: 24px;
         }
 
-        #contactSection h2 {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #111827;
-            margin-bottom: 12px;
-        }
-
-        #contactSection p {
-            font-size: 14px;
-            color: #64748b;
-            margin-bottom: 6px;
-        }
-
-        #contactSection a {
-            font-weight: 500;
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: #ffffff;
+            color: #94a3b8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            transition: color 0.2s;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease;
         }
 
-        #contactSection a:hover {
-            text-decoration: underline;
+        .social-icon:hover {
+            color: #1d4ed8;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.07);
+            transform: translateY(-1px);
         }
 
-        /* --- Abstract Shapes --- */
+        /* --- Abstract 3D Floating Shapes --- */
+        /* Recreated with pure CSS vectors to avoid broken external image links */
         .shape {
             position: absolute;
             pointer-events: none;
         }
 
+        /* Green crescent shape on the left */
         .shape-left {
-            left: 12%;
-            top: 55%;
+            left: 15%;
+            top: 60%;
             width: 35px;
             height: 35px;
             border: 8px solid #7fa99b;
@@ -251,25 +229,45 @@
             border-bottom-color: transparent;
             border-radius: 50%;
             transform: rotate(-30deg);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
         }
 
+        /* Gold zigzag/ribbon shape on the right */
         .shape-right {
-            right: 15%;
-            top: 58%;
+            right: 18%;
+            top: 62%;
             width: 25px;
             height: 50px;
-            background: repeating-linear-gradient(45deg, #dca869, #dca869 4px, transparent 4px, transparent 8px);
+            background: repeating-linear-gradient(
+                45deg,
+                #dca869,
+                #dca869 4px,
+                transparent 4px,
+                transparent 8px
+            );
             opacity: 0.8;
             transform: rotate(15deg);
         }
 
-        /* Responsive Layout Overrides */
+        /* Bottom right corner gold abstract element */
+        .shape-corner {
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at center, #f5bc7a 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.6;
+            filter: blur(10px);
+        }
+
+        /* --- Responsive Tweaks --- */
         @media (max-width: 768px) {
-            .shape-left, .shape-right {
-                display: none;
+            h1 {
+                font-size: 34px;
             }
-            body {
-                padding-bottom: 20px;
+            .shape-left, .shape-right {
+                display: none; /* Keeps mobile view clean */
             }
         }
     </style>
@@ -278,120 +276,39 @@
 
     <header>
         <div class="logo-container">
-            <div class="logo-icon" id="logoIcon">-</div>
-            <span class="logo-text" id="logoName">Loading...</span>
+            <div class="logo-icon">
+                <i class="fa-solid fa-link"></i>
+            </div>
+            <span class="logo-text">JEN-MICROFINANCE  BANK</span>
         </div>
     </header>
 
     <main>
-        <div class="emoji-container">🍳</div>
+        <div class="emoji-container">👍🏼</div>
         <div class="sub-badge">We're Still</div>
+        <h1>Cooking Our Website.</h1>
+        <p class="description">
+            We are going to launch our website Very Soon.
+            <span>Stay Tune.</span>
+        </p>
         
-        <h1 id="mainTitle">Cooking Our Website.</h1>
-        
-        <div class="description-wrapper" id="textContent">
-            <p>Preparing something special for you.</p>
-        </div>
-
-        <div id="launchImage">
-            <img src="" alt="Launch illustration preview">
-        </div>
-        
-        <a id="ctaLink" href="#" class="cta-btn">
+        <button class="cta-btn">
             <span class="btn-icon">
                 <i class="fa-regular fa-envelope"></i>
             </span>
             <span class="btn-text">Notify Me <i class="fa-solid fa-chevron-right" style="font-size: 10px;"></i></span>
-        </a>
+        </button>
     </main>
 
     <div class="shape shape-left"></div>
     <div class="shape shape-right"></div>
+    <div class="shape shape-corner"></div>
 
-    <footer id="contactSection">
-        </footer>
+    <footer>
+        <a href="#" class="social-icon" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    </footer>
 
-    <script>
-        const domain = window.location.hostname.toLowerCase();
-        const sites = {
-            "zurialltd.com": {
-                name: "Zurial Ltd",
-                title: "Launching soon",
-                icontext: "Z",
-                description: [
-                    "Something amazing is on the way...",
-                    "Stay tuned for updates!"
-                ],
-                contact: {
-                    email: "hello@zurialltd.com",
-                    phone: "+234 801 234 5678",
-                    social: {
-                        twitter: "https://twitter.com/ZurialLtd",
-                        linkedin: "https://linkedin.com/company/zurialltd"
-                    }
-                }
-            },
-            "schematiq.com": {
-                name: "Schematiq",
-                title: "Launching soon",
-                icontext: "S",
-                description: [
-                    "Tech doesn't have to feel like a different language.",
-                    "Innovation works for you and your people."
-                ],
-                contact: {
-                    email: "hello@schematiq.com",
-                    phone: "+1 234 567 890",
-                    social: { twitter: "#", linkedin: "#" }
-                }
-            }
-        };
-
-        const defaultSite = {
-            name: "Our Website",
-            title: "Coming Soon",
-            icontext: "O",
-            description: ["Exciting things are on the way!", "Stay tuned!"],
-            contact: {
-                email: "info@example.com",
-                phone: "+123 456 7890",
-                social: { twitter: "#", linkedin: "#" }
-            }
-        };
-
-        const site = sites[domain] || defaultSite;
-
-        // Update dynamic content hooks matching UI styling blocks
-        document.getElementById("logoName").textContent = site.name;
-        document.getElementById("logoIcon").textContent = site.icontext;
-        document.getElementById("mainTitle").textContent = site.title;
-
-        const textContent = document.getElementById("textContent");
-        textContent.innerHTML = "";
-        site.description.forEach(p => {
-            const para = document.createElement("p");
-            para.textContent = p;
-            textContent.appendChild(para);
-        });
-
-        // Set dynamic launch placeholder image based on client name string
-        const launchImage = document.querySelector("#launchImage img");
-        launchImage.src = "https://picsum.photos/seed/" + site.name.replace(/\s+/g,'') + "/350/250";
-
-        // Tie the default "Notify Me" button link to the domain email trigger
-        document.getElementById("ctaLink").href = `mailto:${site.contact.email}`;
-
-        // Update dynamic custom layout contact row
-        const contactSection = document.getElementById("contactSection");
-        contactSection.innerHTML = `
-            <h2>Contact Us</h2>
-            <p>Email: <a href="mailto:${site.contact.email}" style="color:#1d4ed8;">${site.contact.email}</a></p>
-            <p>Phone: <a href="tel:${site.contact.phone}" style="color:#1d4ed8;">${site.contact.phone}</a></p>
-            <p style="margin-top: 10px;">Follow us on: 
-                <a href="${site.contact.social.twitter}" style="color:#1d4ed8; margin-right: 8px;"><i class="fa-brands fa-twitter"></i> Twitter</a> 
-                <a href="${site.contact.social.linkedin}" style="color:#1d4ed8;"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
-            </p>
-        `;
-    </script>
 </body>
 </html>
