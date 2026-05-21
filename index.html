@@ -1,299 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Launching Soon</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    background: #000;
-    color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* fixed viewport height */
-    overflow: hidden; /* remove scroll */
-    position: relative;
-    flex-direction: column;
-  }
-
-  .container {
-    position: relative;
-    width: 90%;
-    max-width: 1200px;
-    padding: 60px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .header-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px; /* slightly reduced spacing */
-  }
-
-  .logo-icon {
-    width: 40px;
-    height: 40px;
-    background: #fff;
-    border-radius: 6px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    color: #000;
-    font-weight: 700;
-  }
-
-  .logo {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 1.7rem;
-    color: #fff;
-    margin-left: 12px;
-    text-transform: capitalize;
-  }
-
-  h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 5rem;
-    line-height: 1;
-    margin: 0;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  .text-content {
-    max-width: 600px;
-    margin-top: 20px;
-  }
-
-  p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    line-height: 1.6;
-    margin: 0 0 15px 0;
-  }
-
-  /* Shapes */
-  .shape-left {
-    position: absolute;
-    top: 10%;
-    right: -50px;
-    width: 250px;
-    height: 150px;
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
-    transform: rotate(-30deg);
-  }
-
-  .shape-right {
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 400px;
-    height: 400px;
-    background: linear-gradient(45deg, #ff7e5f, #feb47b);
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.4;
-    transform: rotate(20deg);
-  }
-
-  /* Floating bubble */
-  .bubble {
-    position: absolute;
-    width: 50px; /* bigger bubble */
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    bottom: 0; /* start at bottom */
-    left: 50px;
-    animation: floatUp 8s linear infinite;
-  }
-
-  @keyframes floatUp {
-    0% { transform: translateY(0); opacity: 0.3; }
-    100% { transform: translateY(-600px) translateX(50px); opacity: 0.6; }
-  }
-
-  /* Launch image */
-  .launch-image {
-    position: absolute;
-    bottom: 150px; /* push above contact */
-    right: 60px;
-    width: 350px;
-    height: 250px;
-    border-radius: 8px;
-    z-index: 2;
-    overflow: hidden;
-    background-color: #333;
-  }
-  .launch-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Contact section */
-  .contact-section {
-    margin-top: 30px; /* push closer to main content */
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    max-width: 600px;
-  }
-
-  .contact-section h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: #ffffff;
-  }
-
-  .contact-section p {
-    margin: 5px 0;
-    font-size: 1rem;
-    opacity: 0.9;
-  }
-
-  @media (max-width: 768px) {
-    h1 { font-size: 3rem; }
-    .text-content { max-width: 90%; margin-top: 15px; }
-    .launch-image { width: 250px; height: 180px; bottom: 150px; right: 30px; }
-    .shape-left, .shape-right { filter: blur(50px); opacity: 0.3; }
-    .contact-section { padding: 15px; }
-  }
-
-  @media (max-width: 480px) {
-    h1 { font-size: 2.5rem; }
-    .logo { font-size: 1.4rem; }
-    .logo-icon { width: 30px; height: 30px; font-size: 1rem; }
-    .launch-image { display: none; }
-  }
-</style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="header-section">
-      <div class="logo-icon" id="logoIcon">S</div>
-      <div class="logo" id="logoName">Welcome</div>
-    </div>
-
-    <h1 id="mainTitle">Launching<br>soon</h1>
-
-    <div class="text-content" id="textContent">
-      <p>Tech doesn't have to feel like a different language. We built Schematiq to make sure innovation works for you, your business, and your people.</p>
-      <p>We can't wait to innovate with you!</p>
-    </div>
-
-    <div class="shape-left"></div>
-    <div class="shape-right"></div>
-
-    <div class="launch-image" id="launchImage">
-      <img src="" alt="Launch image">
-    </div>
-
-    <div class="bubble"></div> <!-- Animated bubble -->
-
-    <!-- Contact Section -->
-    <div class="contact-section" id="contactSection">
-      <h2>Contact Us</h2>
-      <p>Email: <a href="mailto:info@example.com" style="color:#00c6ff;">info@example.com</a></p>
-      <p>Phone: <a href="tel:+1234567890" style="color:#00c6ff;">+1 234 567 890</a></p>
-      <p>Follow us on: <a href="#" style="color:#00c6ff;">Twitter</a>, <a href="#" style="color:#00c6ff;">LinkedIn</a></p>
-    </div>
-  </div>
-
-<script>
-  const domain = window.location.hostname.toLowerCase();
-  const sites = {
-    "zurialltd.com": {
-      name: "Zurial Ltd",
-      title: "Launching soon",
-      icontext: "Z",
-      description: [
-        "Something amazing is on the way...",
-        "Stay tuned for updates!"
-      ],
-      contact: {
-        email: "hello@zurialltd.com",
-        phone: "+234 801 234 5678",
-        social: {
-          twitter: "https://twitter.com/ZurialLtd",
-          linkedin: "https://linkedin.com/company/zurialltd"
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-    },
-    "schematiq.com": {
-      name: "Schematiq",
-      title: "Launching soon",
-      icontext: "S",
-      description: [
-        "Tech doesn't have to feel like a different language.",
-        "Innovation works for you and your people."
-      ],
-      contact: {
-        email: "hello@schematiq.com",
-        phone: "+1 234 567 890",
-        social: { twitter: "#", linkedin: "#" }
-      }
-    }
-  };
 
-  const defaultSite = {
-    name: "Our Website",
-    title: "Coming Soon",
-    icontext: "O",
-    description: ["Exciting things are on the way!", "Stay tuned!"],
-    contact: {
-      email: "info@example.com",
-      phone: "+123 456 7890",
-      social: { twitter: "#", linkedin: "#" }
-    }
-  };
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 0 20px 40px 20px;
+            color: #555e71;
+            
+            /* Ambient multi-colored background mesh */
+            background-color: #f8faff;
+            background-image: 
+                radial-gradient(at 0% 15%, rgba(223, 191, 243, 0.4) 0px, transparent 40%),
+                radial-gradient(at 100% 100%, rgba(254, 212, 171, 0.5) 0px, transparent 35%),
+                radial-gradient(at 85% 85%, rgba(212, 227, 253, 0.5) 0px, transparent 40%);
+        }
 
-  const site = sites[domain] || defaultSite;
+        /* --- Header (Top Notch Container) --- */
+        header {
+            position: relative;
+            background: #ffffff;
+            padding: 12px 45px;
+            border-bottom-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
 
-  // Update dynamic content
-  document.getElementById("logoName").textContent = site.name;
-  document.getElementById("logoIcon").textContent = site.icontext;
-  document.getElementById("mainTitle").textContent = site.title;
+        /* Seamless blending corners for the notch */
+        header::before, header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            background: transparent;
+        }
+        header::before {
+            left: -25px;
+            border-top-right-radius: 25px;
+            box-shadow: 6px -6px 0 6px #ffffff;
+        }
+        header::after {
+            right: -25px;
+            border-top-left-radius: 25px;
+            box-shadow: -6px -6px 0 6px #ffffff;
+        }
 
-  const textContent = document.getElementById("textContent");
-  textContent.innerHTML = "";
-  site.description.forEach(p => {
-    const para = document.createElement("p");
-    para.textContent = p;
-    textContent.appendChild(para);
-  });
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-  // Set launch image
-  const launchImage = document.querySelector("#launchImage img");
-  launchImage.src = "https://picsum.photos/seed/" + site.name.replace(/\s+/g,'') + "/350/250";
+        .logo-icon {
+            background: #1e40af;
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
 
-  // Update contact dynamically
-  const contactSection = document.getElementById("contactSection");
-  contactSection.innerHTML = `
-    <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:${site.contact.email}" style="color:#00c6ff;">${site.contact.email}</a></p>
-    <p>Phone: <a href="tel:${site.contact.phone}" style="color:#00c6ff;">${site.contact.phone}</a></p>
-    <p>Follow us on: 
-      <a href="${site.contact.social.twitter}" style="color:#00c6ff;">Twitter</a>, 
-      <a href="${site.contact.social.linkedin}" style="color:#00c6ff;">LinkedIn</a>
-    </p>
-  `;
-</script>
+        .logo-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        /* --- Main Content --- */
+        main {
+            text-align: center;
+            max-width: 650px;
+            margin: auto;
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .emoji-container {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .sub-badge {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #64748b;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(32px, 5vw, 46px); 
+            font-weight: 800;
+            color: #1d4ed8;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .description-wrapper {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .description-wrapper p {
+            margin-bottom: 4px;
+        }
+
+        /* Dynamic Launch Image Container */
+        #launchImage {
+            margin-bottom: 30px;
+            max-width: 100%;
+        }
+
+        #launchImage img {
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* CTA Button Template styled as a generic interactive wrapper */
+        .cta-btn {
+            background-color: #0f1123;
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px 14px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(15, 17, 35, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(15, 17, 35, 0.35);
+        }
+
+        .btn-icon {
+            background: #ffffff;
+            color: #0f1123;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .btn-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        /* --- Footer (Contact & Social Info Section) --- */
+        footer {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            z-index: 10;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            padding-top: 24px;
+        }
+
+        #contactSection h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        #contactSection p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        #contactSection a {
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        #contactSection a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Abstract Shapes --- */
+        .shape {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .shape-left {
+            left: 12%;
+            top: 55%;
+            width: 35px;
+            height: 35px;
+            border: 8px solid #7fa99b;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            transform: rotate(-30deg);
+        }
+
+        .shape-right {
+            right: 15%;
+            top: 58%;
+            width: 25px;
+            height: 50px;
+            background: repeating-linear-gradient(45deg, #dca869, #dca869 4px, transparent 4px, transparent 8px);
+            opacity: 0.8;
+            transform: rotate(15deg);
+        }
+
+        /* Responsive Layout Overrides */
+        @media (max-width: 768px) {
+            .shape-left, .shape-right {
+                display: none;
+            }
+            body {
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon" id="logoIcon">-</div>
+            <span class="logo-text" id="logoName">Loading...</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="emoji-container">🍳</div>
+        <div class="sub-badge">We're Still</div>
+        
+        <h1 id="mainTitle">Cooking Our Website.</h1>
+        
+        <div class="description-wrapper" id="textContent">
+            <p>Preparing something special for you.</p>
+        </div>
+
+        <div id="launchImage">
+            <img src="" alt="Launch illustration preview">
+        </div>
+        
+        <a id="ctaLink" href="#" class="cta-btn">
+            <span class="btn-icon">
+                <i class="fa-regular fa-envelope"></i>
+            </span>
+            <span class="btn-text">Notify Me <i class="fa-solid fa-chevron-right" style="font-size: 10px;"></i></span>
+        </a>
+    </main>
+
+    <div class="shape shape-left"></div>
+    <div class="shape shape-right"></div>
+
+    <footer id="contactSection">
+        </footer>
+
+    <script>
+        const domain = window.location.hostname.toLowerCase();
+        const sites = {
+            "zurialltd.com": {
+                name: "Zurial Ltd",
+                title: "Launching soon",
+                icontext: "Z",
+                description: [
+                    "Something amazing is on the way...",
+                    "Stay tuned for updates!"
+                ],
+                contact: {
+                    email: "hello@zurialltd.com",
+                    phone: "+234 801 234 5678",
+                    social: {
+                        twitter: "https://twitter.com/ZurialLtd",
+                        linkedin: "https://linkedin.com/company/zurialltd"
+                    }
+                }
+            },
+            "schematiq.com": {
+                name: "Schematiq",
+                title: "Launching soon",
+                icontext: "S",
+                description: [
+                    "Tech doesn't have to feel like a different language.",
+                    "Innovation works for you and your people."
+                ],
+                contact: {
+                    email: "hello@schematiq.com",
+                    phone: "+1 234 567 890",
+                    social: { twitter: "#", linkedin: "#" }
+                }
+            }
+        };
+
+        const defaultSite = {
+            name: "Our Website",
+            title: "Coming Soon",
+            icontext: "O",
+            description: ["Exciting things are on the way!", "Stay tuned!"],
+            contact: {
+                email: "info@example.com",
+                phone: "+123 456 7890",
+                social: { twitter: "#", linkedin: "#" }
+            }
+        };
+
+        const site = sites[domain] || defaultSite;
+
+        // Update dynamic content hooks matching UI styling blocks
+        document.getElementById("logoName").textContent = site.name;
+        document.getElementById("logoIcon").textContent = site.icontext;
+        document.getElementById("mainTitle").textContent = site.title;
+
+        const textContent = document.getElementById("textContent");
+        textContent.innerHTML = "";
+        site.description.forEach(p => {
+            const para = document.createElement("p");
+            para.textContent = p;
+            textContent.appendChild(para);
+        });
+
+        // Set dynamic launch placeholder image based on client name string
+        const launchImage = document.querySelector("#launchImage img");
+        launchImage.src = "https://picsum.photos/seed/" + site.name.replace(/\s+/g,'') + "/350/250";
+
+        // Tie the default "Notify Me" button link to the domain email trigger
+        document.getElementById("ctaLink").href = `mailto:${site.contact.email}`;
+
+        // Update dynamic custom layout contact row
+        const contactSection = document.getElementById("contactSection");
+        contactSection.innerHTML = `
+            <h2>Contact Us</h2>
+            <p>Email: <a href="mailto:${site.contact.email}" style="color:#1d4ed8;">${site.contact.email}</a></p>
+            <p>Phone: <a href="tel:${site.contact.phone}" style="color:#1d4ed8;">${site.contact.phone}</a></p>
+            <p style="margin-top: 10px;">Follow us on: 
+                <a href="${site.contact.social.twitter}" style="color:#1d4ed8; margin-right: 8px;"><i class="fa-brands fa-twitter"></i> Twitter</a> 
+                <a href="${site.contact.social.linkedin}" style="color:#1d4ed8;"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+            </p>
+        `;
+    </script>
 </body>
 </html>
